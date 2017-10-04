@@ -3,6 +3,8 @@ import SmartySelect from './modules/smarty-select';
 
 // const container = document.querySelector();
 
+console.clear();
+
 const test = SmartySelect('[data-js="smarty-select"]', {
   classes: {
     container: 'test-container',

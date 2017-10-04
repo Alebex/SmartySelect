@@ -61,7 +61,7 @@ class SmartySelect {
     }
   }
 
-  static defaultParameters() {
+  static get defaultParameters() {
     const placeholderText = 'Select options...';
     const defaultContainer = 'smarty-select';
     const defaultClass = {
@@ -118,7 +118,7 @@ class SmartySelect {
   _createSelectedItem(value) {
     const self = this;
     const { userConfig } = self;
-    const defaultParameters = SmartySelect.defaultParameters();
+    const defaultParameters = SmartySelect.defaultParameters;
     const { defaultClass } = defaultParameters;
 
     const container = self._createElement('div', {
@@ -137,7 +137,7 @@ class SmartySelect {
   _createSelect() {
     const self = this;
     const { userConfig, configSelect } = self;
-    const defaultParameters = SmartySelect.defaultParameters();
+    const defaultParameters = SmartySelect.defaultParameters;
     const { defaultContainer, defaultClass } = defaultParameters;
 
     configSelect.mainParent = _.isElement(self.initSelector)
@@ -272,7 +272,9 @@ class SmartySelect {
       configSelect.button.removeChild(value);
     });
 
-    configSelect.button.appendChild(configSelect.placeholder);
+    if (configSelect.initialState) {
+      configSelect.button.appendChild(configSelect.placeholder);
+    }
   }
 
   _updateState() {
